@@ -21,18 +21,7 @@ class UsersController extends Controller
             'all_users'  => $all_users
         ]);
     }
-    public function show($id)
-    {
-        //
-    }
-    public function edit($id)
-    {
-        //
-    }
-    public function update(Request $request, $id)
-    {
-        //
-    }
+
     public function follow(User $user)
     {
         $follower = auth()->user();
