@@ -21,9 +21,6 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('contact') }}">Contact</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ route('user') }}">User</a>
-        </li>
       </ul>
 
       <!-- 右寄せメニュー -->
@@ -45,6 +42,10 @@
             {{-- ④ --}}
             <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
           </li>
+
+        <li class="nav-item">
+            <img src="{{ asset('storage/profile_image/' .auth()->user()->profile_image) }}" class="rounded-circle" width="50" height="50">
+        </li>
 
           <!-- ドロップダウンメニュー -->
           <li class="nav-item dropdown">

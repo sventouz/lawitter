@@ -5,11 +5,13 @@
         <div class="headcopy">Title</div><hr>
         <h1 class="text">{{ $item->title }}</h1>
         <br/>
+        <p class="name"><a href="{{ url('users/' .$item->id) }}">ここ分からん</a></p>
+        <br/>
         <article>
             <div>{{ $item->body }}</div>
         </article>
         <br/>
-        @unless ($item->tags->isEmpty())
+        @unless ( $item->tags->isEmpty() )
             <h5>Tags:</h5>
             <ul>
                 @foreach($item->tags as $tag)
