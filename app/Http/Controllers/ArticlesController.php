@@ -24,7 +24,7 @@ class ArticlesController extends Controller
     }
     //
     // public function show(Article $article, $id)
-    public function show(User $user, $id)
+    public function show($id)
     {
         // return view('articles.show', compact('article'));
 
@@ -35,7 +35,6 @@ class ArticlesController extends Controller
             'authUser' => $authUser,
             'item' => $item,
             'like' => $like,
-            'user'  => $user,
         ];
         return view('articles.show', $params);
     }
