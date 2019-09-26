@@ -23,12 +23,9 @@ class ArticlesController extends Controller
         return view('articles.index', compact('articles'));
     }
     //
-    // public function show(Article $article, $id)
     public function show($id)
     {
-        // return view('articles.show', compact('article'));
-
-        $authUser = Auth::user(); // 認証ユーザー取得
+        $authUser = Auth::user();
         $item = Article::find($id);
         $like = $item->likes()->where('user_id', Auth::user()->id)->first();
         $params = [
@@ -69,7 +66,6 @@ class ArticlesController extends Controller
     //
     public function destroy(Article $article)
     {
-        // $article = Article::findOrFail($id);
         $article->delete();
         return redirect('articles')->with('message', '記事を削除しました。');
     }

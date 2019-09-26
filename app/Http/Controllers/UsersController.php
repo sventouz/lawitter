@@ -7,6 +7,7 @@ use App\Http\Requests;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Auth;
+use App\Like;
 use App\Article;
 use App\User;
 use App\Follower;
@@ -45,20 +46,26 @@ class UsersController extends Controller
         }
     }
     // ユーザー画面
-    public function show(User $user, Follower $follower)
+    public function show(User $user, Article $article, Follower $follower)
     {
         $login_user = auth()->user();
         $is_following = $login_user->isFollowing($user->id);
         $is_followed = $login_user->isFollowed($user->id);
+        $timelines = $article->getUserTimeLine($user->id);
+        $article_count = $article->getArticleCount($user->id);
         $follow_count = $follower->getFollowCount($user->id);
         $follower_count = $follower->getFollowerCount($user->id);
+        $like = $article->likes()->where('user_id', Auth::user()->id)->first();
 
         return view('users.show', [
             'user'           => $user,
             'is_following'   => $is_following,
             'is_followed'    => $is_followed,
+            'timelines'      => $timelines,
+            'article_count'    => $article_count,
             'follow_count'   => $follow_count,
-            'follower_count' => $follower_count
+            'follower_count' => $follower_count,
+            'like' => $like,
         ]);
     }
     //

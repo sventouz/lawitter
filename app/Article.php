@@ -33,4 +33,12 @@ class Article extends Model
     {
         return Like::where('user_id', \Auth::user()->id)->first();
     }
+    public function getUserTimeLine(Int $user_id)
+    {
+        return $this->where('user_id', $user_id)->orderBy('created_at', 'DESC')->paginate(50);
+    }
+    public function getArticleCount(Int $user_id)
+    {
+        return $this->where('user_id', $user_id)->count();
+    }
 }

@@ -5,7 +5,7 @@
         <div class="headcopy">Title</div><hr>
         <h1 class="text">{{ $item->title }}</h1>
         <br/>
-        <p class="name"><a href="{{ url('users/' .$item->id) }}">ここ分からん</a></p>
+        <p class="name"><a href="{{ url('users/' .$item->user_id) }}">ここ分からん</a></p>
         <br/>
         <article>
             <div>{{ $item->body }}</div>
@@ -30,6 +30,7 @@
     <br/>
     @if (Auth::check())
         @if ($like)
+        <p>delete</p>
             <!-- いいね取り消しフォーム -->
             {{ Form::model($item, array('action' => array('LikesController@destroy', $item->id, $like->id))) }}
             <button type="submit">
@@ -37,6 +38,7 @@
             </button>
             {!! Form::close() !!}
         @else
+        <p>add</p>
         <!-- いいねフォーム -->
         {{ Form::model($item, array('action' => array('LikesController@store', $item->id))) }}
             <button type="submit">
