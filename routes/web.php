@@ -8,7 +8,6 @@ Route::get('/', 'ArticlesController@index')->name('home');
 Route::resource('articles', 'ArticlesController');
 
 Auth::routes();
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 Route::post('/articles/{id}/likes', 'LikesController@store');
 Route::post('/articles/{id}/likes/{like}', 'LikesController@destroy');

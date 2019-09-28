@@ -41,4 +41,8 @@ class Article extends Model
     {
         return $this->where('user_id', $user_id)->count();
     }
+    public function getArticle(Int $article_id)
+    {
+        return $this->with('user')->where('id', $article_id)->first();
+    }
 }
